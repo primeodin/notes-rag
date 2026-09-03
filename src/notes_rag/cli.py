@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -34,6 +35,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Answer from retrieved notes without calling an API",
     )
+    p.add_argument(
+        "--json",
+        action="store_true",
+        help="Emit the answer and sources as JSON",
+    )
     return p
 
 
@@ -47,8 +53,26 @@ def main(argv: list[str] | None = None) -> int:
     hits = retrieve(notes, args.question, k=args.k)
     answerer = Answerer.from_env(mock=args.mock)
     try:
-        print(answerer.answer(args.question, hits))
-        if hits:
+        answer = answerer.answer(args.question, hits)
+        if args.json:
+            print(
+                json.dumps(
+                    {
+                        "answer": answer,
+                        "sources": [
+                            {
+                                "title": note.title,
+                                "file": note.path.name,
+                                "score": score,
+                            }
+                            for note, score in hits
+                        ],
+                    }
+                )
+            )
+        else:
+            print(answer)
+        if hits and not args.json:
             print("\nSources:")
             for note, score in hits:
                 print(f"  - {note.title} ({note.path.name}, score={score:.3f})")

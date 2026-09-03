@@ -12,6 +12,7 @@ cd notes-rag
 pip install -e ".[dev]"
 pytest
 python -m notes_rag --mock "What is a git remote?"
+# add --json for machine-readable answer and sources
 ```
 
 You should see a `[mock]` answer plus a **Sources** list. That means retrieval works before you spend a token.

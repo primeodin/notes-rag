@@ -14,7 +14,22 @@ pytest
 python -m notes_rag --mock "What is a git remote?"
 ```
 
-You should see a `[mock]` answer plus a **Sources** list. That means retrieval works before you spend a token.
+**Expected stdout** (deterministic on the bundled `notes/` corpus + `--mock` — yours should match):
+
+```text
+# pytest
+.......                                                                  [100%]
+7 passed
+
+# mock ask
+[mock] Based on Git remotes, What RAG is: A remote is a shared copy of your repo, usually on GitHub. `git push` sends your commits to the remote. `git pull` brings remote commits into your local branch. Always `git status`… (question: 'What is a git remote?')
+
+Sources:
+  - Git remotes (git-remotes.md, score=0.537)
+  - What RAG is (rag-idea.md, score=0.241)
+```
+
+That `[mock]` answer plus **Sources** means retrieval works before you spend a token. If titles or scores drift, the note corpus or scorer changed — open an issue before "fixing" ranking by eye.
 
 ## Real answers (optional)
 

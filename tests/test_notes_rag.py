@@ -8,11 +8,12 @@ ROOT = Path(__file__).resolve().parents[1]
 NOTES = ROOT / "notes"
 
 
-def test_loads_three_sample_notes():
+def test_loads_sample_notes():
     notes = load_notes(NOTES)
-    assert len(notes) >= 3
+    assert len(notes) >= 4
     titles = {n.title.lower() for n in notes}
     assert any("remote" in t for t in titles)
+    assert any("pytest" in t for t in titles)
 
 
 def test_retrieve_git_remote():
@@ -27,6 +28,14 @@ def test_retrieve_rag_idea():
     hits = retrieve(notes, "What is retrieval augmented generation?", k=2)
     assert hits
     assert "rag" in hits[0][0].title.lower() or "retrieval" in hits[0][0].body.lower()
+
+
+def test_retrieve_pytest_basics():
+    notes = load_notes(NOTES)
+    hits = retrieve(notes, "How do I run pytest?", k=2)
+    assert hits
+    top = hits[0][0]
+    assert "pytest" in top.title.lower() or "pytest" in top.body.lower()
 
 
 def test_mock_answer_cites(capsys):

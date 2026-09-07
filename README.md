@@ -33,13 +33,22 @@ Drop your own `.md` files in `notes/` and ask again.
 | `retrieve.py` | Load Markdown, score with bag-of-words cosine |
 | `answer.py` | Mock or OpenAI-compatible completion grounded in hits |
 | `cli.py` | Question in → answer + citations out |
-| `notes/` | Sample teaching notes (git, Ollama, RAG) |
+| `notes/` | Sample teaching notes (git, Ollama, RAG, pytest) |
 
 ## Change one thing
 
 1. Add `notes/my-topic.md` and ask a question only that file can answer  
 2. Raise `--k` to pull more context  
 3. Swap bag-of-words for real embeddings later — keep the same CLI  
+
+## Help / good first issues
+
+Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues). Open contribution ideas:
+
+- **#1** — `--json` CLI output for answer + sources
+- **#3** — `CONTRIBUTING.md` for first-timers
+
+New to pull requests? Start at [first-commit-ai](https://github.com/primeodin/first-commit-ai), then come back.
 
 ## Daily builds series
 

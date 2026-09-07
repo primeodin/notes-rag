@@ -47,7 +47,7 @@ Drop your own `.md` files in `notes/` and ask again.
 | --- | --- |
 | [first-commit-ai](https://github.com/primeodin/first-commit-ai) | starter chat CLI |
 | **notes-rag** (this) | starter RAG |
-| [tiny-bpe-tokenizer](https://github.com/primeodin/tiny-bpe-tokenizer) | starter tokenizer (building in the open) |
+| [tiny-bpe-tokenizer](https://github.com/primeodin/tiny-bpe-tokenizer) | starter tokenizer |
 | next: tiny tool-calling agent (ReAct, no framework soup) | mid |
 
 Profile: [github.com/primeodin](https://github.com/primeodin)

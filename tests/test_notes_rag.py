@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from notes_rag.answer import Answerer
@@ -44,6 +45,16 @@ def test_mock_answer_cites(capsys):
     assert code == 0
     assert "[mock]" in out
     assert "Sources:" in out
+
+
+def test_mock_answer_json_output(capsys):
+    code = main(["--mock", "--json", "--notes", str(NOTES), "What is a git remote?"])
+    out = capsys.readouterr().out
+    data = json.loads(out)
+    assert code == 0
+    assert "[mock]" in data["answer"]
+    assert data["sources"]
+    assert {"title", "file", "score"}.issubset(data["sources"][0])
 
 
 def test_empty_notes_dir(tmp_path, capsys):

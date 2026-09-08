@@ -61,8 +61,8 @@ Drop your own `.md` files in `notes/` and ask again.
 
 Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues). Open contribution ideas:
 
-- **#1** — [`--json` CLI output for answer + sources](https://github.com/primeodin/notes-rag/issues/1)
 - **#3** — [`CONTRIBUTING.md` for first-timers](https://github.com/primeodin/notes-rag/issues/3)
+- **Shipped:** `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
 
 New to pull requests? Start at [first-commit-ai](https://github.com/primeodin/first-commit-ai), then come back.
 

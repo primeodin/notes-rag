@@ -59,9 +59,9 @@ Drop your own `.md` files in `notes/` and ask again.
 
 ## Help / good first issues
 
-Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues). Open contribution ideas:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for fork → install → mock → PR. Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues).
 
-- **#3** — [`CONTRIBUTING.md` for first-timers](https://github.com/primeodin/notes-rag/issues/3)
+- **Shipped:** `#3` `CONTRIBUTING.md` for first-timers
 - **Shipped:** `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
 
 New to pull requests? Start at [first-commit-ai](https://github.com/primeodin/first-commit-ai), then come back.

@@ -61,8 +61,13 @@ Drop your own `.md` files in `notes/` and ask again.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for fork → install → mock → PR. Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues).
 
-- **Shipped:** `#3` `CONTRIBUTING.md` for first-timers
-- **Shipped:** `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
+**Open (good first issue):**
+- [#7](https://github.com/primeodin/notes-rag/issues/7) — `docs/how-scoring-works.md` (hand-worked bag-of-words cosine)
+- [#8](https://github.com/primeodin/notes-rag/issues/8) — `--list-notes` flag (print indexed titles, no question)
+
+**Shipped:**
+- `#3` `CONTRIBUTING.md` for first-timers
+- `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
 
 New to pull requests? Start at [first-commit-ai](https://github.com/primeodin/first-commit-ai), then come back.
 

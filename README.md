@@ -50,6 +50,7 @@ Drop your own `.md` files in `notes/` and ask again.
 | `answer.py` | Mock or OpenAI-compatible completion grounded in hits |
 | `cli.py` | Question in → answer + citations out |
 | `notes/` | Sample teaching notes (git, Ollama, RAG, pytest) |
+| [`docs/how-scoring-works.md`](docs/how-scoring-works.md) | Hand-worked bag-of-words cosine walkthrough |
 
 ## Change one thing
 
@@ -62,10 +63,10 @@ Drop your own `.md` files in `notes/` and ask again.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for fork → install → mock → PR. Scoped tickets live in [Issues](https://github.com/primeodin/notes-rag/issues).
 
 **Open (good first issue):**
-- [#7](https://github.com/primeodin/notes-rag/issues/7) — `docs/how-scoring-works.md` (hand-worked bag-of-words cosine)
 - [#8](https://github.com/primeodin/notes-rag/issues/8) — `--list-notes` flag (print indexed titles, no question)
 
 **Shipped:**
+- `#7` [`docs/how-scoring-works.md`](docs/how-scoring-works.md) — hand-worked bag-of-words cosine
 - `#3` `CONTRIBUTING.md` for first-timers
 - `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
 

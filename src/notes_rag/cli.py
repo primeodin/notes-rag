@@ -51,6 +51,12 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     notes = load_notes(notes_dir)
     hits = retrieve(notes, args.question, k=args.k)
+    if not hits:
+        print(
+            f"no notes matched — try different words or add a note under {notes_dir}",
+            file=sys.stderr,
+        )
+        return 1
     answerer = Answerer.from_env(mock=args.mock)
     try:
         answer = answerer.answer(args.question, hits)

@@ -19,10 +19,11 @@ def build_parser() -> argparse.ArgumentParser:
             "Examples:\n"
             "  python -m notes_rag --mock \"What is a git remote?\"\n"
             "  python -m notes_rag --notes ./notes --mock \"What is RAG?\"\n"
+            "  python -m notes_rag --list-notes\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    p.add_argument("question", help="Your question")
+    p.add_argument("question", nargs="?", default=None, help="Your question")
     p.add_argument(
         "--notes",
         type=Path,
@@ -40,15 +41,33 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Print a single JSON object with answer and sources",
     )
+    p.add_argument(
+        "--list-notes",
+        action="store_true",
+        help="Print indexed note titles and filenames, then exit (prefers list mode if question is also passed)",
+    )
     return p
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
     notes_dir = args.notes
     if not notes_dir.is_dir():
         print(f"error: notes folder not found: {notes_dir}", file=sys.stderr)
         return 1
+
+    if args.list_notes:
+        notes = load_notes(notes_dir)
+        for note in notes:
+            print(f"{note.title} ({note.path.name})")
+        return 0
+
+    if not args.question:
+        parser.print_usage(file=sys.stderr)
+        print("notes-rag: error: the following arguments are required: question", file=sys.stderr)
+        return 2
+
     notes = load_notes(notes_dir)
     hits = retrieve(notes, args.question, k=args.k)
     answerer = Answerer.from_env(mock=args.mock)

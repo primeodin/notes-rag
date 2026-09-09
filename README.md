@@ -51,6 +51,8 @@ Drop your own `.md` files in `notes/` and ask again.
 | `cli.py` | Question in → answer + citations out |
 | `notes/` | Sample teaching notes (git, Ollama, RAG, pytest) |
 
+See [how scoring works](docs/how-scoring-works.md) for a hand-worked cosine example.
+
 ## Change one thing
 
 1. Add `notes/my-topic.md` and ask a question only that file can answer  

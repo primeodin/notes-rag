@@ -64,6 +64,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for fork → install → mock → PR. Sco
 
 **Open (good first issue):**
 - [#8](https://github.com/primeodin/notes-rag/issues/8) — `--list-notes` flag (print indexed titles, no question)
+- [#11](https://github.com/primeodin/notes-rag/issues/11) — `docs/add-your-own-note.md` (prove retrieval picks your file)
+- [#12](https://github.com/primeodin/notes-rag/issues/12) — empty-hits notice when nothing retrieves
 
 **Shipped:**
 - `#7` [`docs/how-scoring-works.md`](docs/how-scoring-works.md) — hand-worked bag-of-words cosine

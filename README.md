@@ -32,6 +32,11 @@ Sources:
 
 That `[mock]` answer plus **Sources** means retrieval works before you spend a token. If titles or scores drift, the note corpus or scorer changed — open an issue before "fixing" ranking by eye.
 
+If no notes match (including an empty notes folder), the command prints a notice
+to stderr and exits with status `1` before generating an answer. Try different
+words or add a Markdown note to the folder selected by `--notes`. Stdout stays
+empty, even with `--json`; no answer or Sources block is printed.
+
 ## Real answers (optional)
 
 ```bash

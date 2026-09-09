@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import pytest
+
 from notes_rag.answer import Answerer
 from notes_rag.cli import main
 from notes_rag.retrieve import load_notes, retrieve
@@ -61,9 +63,27 @@ def test_empty_notes_dir(tmp_path, capsys):
     empty = tmp_path / "empty"
     empty.mkdir()
     code = main(["--mock", "--notes", str(empty), "anything"])
-    out = capsys.readouterr().out
-    assert code == 0
-    assert "could not find" in out.lower()
+    captured = capsys.readouterr()
+    assert code == 1
+    assert captured.out == ""
+    assert "no notes matched" in captured.err
+    assert str(empty) in captured.err
+
+
+@pytest.mark.parametrize("flags", [[], ["--mock"], ["--json"], ["--mock", "--json"]])
+def test_no_matching_notes_reports_failure(flags, capsys, monkeypatch):
+    def unexpected_answerer(**kwargs):
+        pytest.fail("empty retrieval must not construct an answerer")
+
+    monkeypatch.setattr(Answerer, "from_env", unexpected_answerer)
+    code = main([*flags, "--notes", str(NOTES), "qzxvplm"])
+    captured = capsys.readouterr()
+    assert code == 1
+    assert captured.out == ""
+    assert "no notes matched" in captured.err
+    assert "try different words or add a note" in captured.err
+    assert str(NOTES) in captured.err
+    assert "Sources:" not in captured.out + captured.err
 
 
 def test_missing_key_without_mock():

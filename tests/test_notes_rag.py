@@ -75,3 +75,35 @@ def test_missing_key_without_mock():
         assert False, "expected RuntimeError"
     except RuntimeError as exc:
         assert "OPENAI_API_KEY" in str(exc)
+
+
+def test_list_notes(capsys):
+    code = main(["--list-notes", "--notes", str(NOTES)])
+    out = capsys.readouterr().out
+    assert code == 0
+    assert "Git remotes (git-remotes.md)" in out
+    assert "What RAG is (rag-idea.md)" in out
+
+
+def test_list_notes_prefers_list_over_question(capsys):
+    code = main(["--list-notes", "--notes", str(NOTES), "What is a git remote?"])
+    out = capsys.readouterr().out
+    assert code == 0
+    assert "Git remotes (git-remotes.md)" in out
+    assert "[mock]" not in out
+
+
+def test_missing_question_without_list_notes(capsys):
+    code = main(["--notes", str(NOTES)])
+    err = capsys.readouterr().err
+    assert code == 2
+    assert "the following arguments are required: question" in err
+
+
+def test_list_notes_missing_dir(tmp_path, capsys):
+    missing = tmp_path / "nonexistent"
+    code = main(["--list-notes", "--notes", str(missing)])
+    err = capsys.readouterr().err
+    assert code == 1
+    assert "notes folder not found" in err
+

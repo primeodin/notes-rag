@@ -13,6 +13,7 @@ pip install -e ".[dev]"
 pytest
 python -m notes_rag --mock "What is a git remote?"
 python -m notes_rag --mock --json "What is a git remote?"  # machine-readable answer + sources
+python -m notes_rag --list-notes                          # print indexed note titles + files
 ```
 
 **Expected stdout** (deterministic on the bundled `notes/` corpus + `--mock` — yours should match):

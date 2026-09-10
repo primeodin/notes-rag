@@ -51,6 +51,7 @@ Drop your own `.md` files in `notes/` and ask again.
 | `cli.py` | Question in → answer + citations out |
 | `notes/` | Sample teaching notes (git, Ollama, RAG, pytest) |
 | [`docs/how-scoring-works.md`](docs/how-scoring-works.md) | Hand-worked bag-of-words cosine walkthrough |
+| [`docs/why-cite.md`](docs/why-cite.md) | Why Sources matter — pytest ranking trap + empty shelf |
 
 ## Change one thing
 
@@ -69,6 +70,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for fork → install → mock → PR. Sco
 
 **Shipped:**
 - `#7` [`docs/how-scoring-works.md`](docs/how-scoring-works.md) — hand-worked bag-of-words cosine
+- [`docs/why-cite.md`](docs/why-cite.md) — trust the Sources line (pytest ranking trap)
 - `#3` `CONTRIBUTING.md` for first-timers
 - `#1` `--json` CLI output — merged from community PR [#6](https://github.com/primeodin/notes-rag/pull/6). Thanks!
 

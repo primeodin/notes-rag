@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 from notes_rag.answer import Answerer
@@ -7,6 +8,27 @@ from notes_rag.retrieve import load_notes, retrieve
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTES = ROOT / "notes"
+
+
+def test_add_your_own_note_walkthrough(tmp_path, capsys):
+    guide = (ROOT / "docs" / "add-your-own-note.md").read_text(encoding="utf-8")
+    example = re.search(r"```markdown\n(.*?)\n```", guide, re.DOTALL)
+    assert example is not None
+    notes_dir = tmp_path / "notes"
+    notes_dir.mkdir()
+    for note in NOTES.glob("*.md"):
+        (notes_dir / note.name).write_text(note.read_text(encoding="utf-8"), encoding="utf-8")
+    (notes_dir / "my-topic.md").write_text(example.group(1), encoding="utf-8")
+
+    code = main([
+        "--mock", "--notes", str(notes_dir),
+        "What staging code does zircon marmalade use?",
+    ])
+    output = capsys.readouterr().out
+    assert code == 0
+    assert "[mock]" in output
+    assert "ORCHID-731" in output
+    assert "Sources:\n  - Zircon marmalade (my-topic.md, score=" in output
 
 
 def test_loads_sample_notes():

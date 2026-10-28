@@ -55,7 +55,7 @@ Drop your own `.md` files in `notes/` and ask again.
 
 ## Change one thing
 
-1. Add `notes/my-topic.md` and ask a question only that file can answer  
+1. Add `notes/my-topic.md` and ask a question only that file can answer — see [`docs/add-your-own-note.md`](docs/add-your-own-note.md)  
 2. Raise `--k` to pull more context  
 3. Swap bag-of-words for real embeddings later — keep the same CLI  
 
